@@ -48,12 +48,11 @@ def define_sql_database(engine, city_stats_table):
 
 def main(args):
     engine, city_stats_table = create_database_schema()
-    
+
     sql_database = define_sql_database(engine, city_stats_table)
-   
+
     model_id = args.embedding_model_path
     device_map = args.device
-
 
     embed_model = IpexLLMEmbedding(model_id, device=device_map)
 
@@ -64,7 +63,7 @@ def main(args):
         max_new_tokens=args.n_predict,
         generate_kwargs={"temperature": 0.7, "do_sample": False},
         model_kwargs={},
-        device_map=device_map
+        device_map=device_map,
     )
 
 
@@ -74,7 +73,7 @@ def main(args):
         tables=["city_stats"],
         llm=llm,
         embed_model=embed_model,
-        return_raw=True
+        return_raw=True,
     )
 
     query_engine = RetrieverQueryEngine.from_args(nl_sql_retriever, llm=llm)
@@ -90,7 +89,7 @@ if __name__ == "__main__":
         "--model-path",
         type=str,
         required=True,
-        help="the path to transformers model"
+        help="the path to transformers model",
     )
     parser.add_argument(
         "--device",
@@ -98,27 +97,23 @@ if __name__ == "__main__":
         type=str,
         default="cpu",
         choices=["cpu", "xpu"],
-        help="The device (Intel CPU or Intel GPU) the LLM model runs on",
+        help="The device (Intel CPU or Intel GPU) the LLM model runs on"
     )
     parser.add_argument(
         "-q",
         "--question",
         type=str,
         default="Which city has the highest population?",
-        help="question you want to ask."
+        help="question you want to ask.",
     )
     parser.add_argument(
         "-e",
         "--embedding-model-path",
         default="BAAI/bge-small-en",
-        help="the path to embedding model path"
+        help="the path to embedding model path",
     )
     parser.add_argument(
-        "-n",
-        "--n-predict",
-        type=int,
-        default=32,
-        help="max number of predict tokens"
+        "-n", "--n-predict", type=int, default=32, help="max number of predict tokens"
     )
     args = parser.parse_args()
 
