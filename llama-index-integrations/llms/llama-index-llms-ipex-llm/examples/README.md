@@ -66,6 +66,7 @@ python more_data_type.py -m <path_to_model> -t <path_to_tokenizer> -l <low_bit_f
 ### Text2SQL Example
 
 This example [text2sql](./text2sql.py) demonstrates how to use LlamaIndex with `ipex-llm` to run a text-to-SQL model on Intel hardware. This example shows how to create a database, define a schema, and run SQL queries using low-bit model optimized with `ipex-llm`.
+
 ### Setup
 
 It requires `llama-index-embeddings-ipex-llm` package as it uses `ipex-llm` embedding.
@@ -86,7 +87,6 @@ For optimal performance, it is recommended to set several environment variables 
   > > set BIGDL_LLM_XMX_DISABLED=1
   > > ```
 
-
 - For Linux Users with Intel Arc A-Series GPU:
   > > ```
   > > # Configure oneAPI environment variables. Required step for APT or offline installed oneAPI.
@@ -102,6 +102,7 @@ For optimal performance, it is recommended to set several environment variables 
 > **NOTE** For the first time that each model runs on Intel iGPU/Intel Arc A300-Series or Pro A60, it may take several minutes to compile.
 
 ---
+
 ### Run the Example
 
 Then, run the example as following:
