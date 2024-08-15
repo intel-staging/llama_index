@@ -81,28 +81,29 @@ For optimal performance, it is recommended to set several environment variables 
 - For Windows Users with Intel Core Ultra integrated GPU
   In Anaconda Prompt:
 
-  > >```
-  > >set SYCL_CACHE_PERSISTENT=1
-  > >set BIGDL_LLM_XMX_DISABLED=1
-  > >```
+  > > ```
+  > > set SYCL_CACHE_PERSISTENT=1
+  > > set BIGDL_LLM_XMX_DISABLED=1
+  > > ```
 
 
 - For Linux Users with Intel Arc A-Series GPU:
-  > >```
-  > ># Configure oneAPI environment variables. Required step for APT or offline installed oneAPI.
-  > ># Skip this step for PIP-installed oneAPI since the environment has already been configured in LD_LIBRARY_PATH.
-  > >source /opt/intel/oneapi/setvars.sh
+  > > ```
+  > > # Configure oneAPI environment variables. Required step for APT or offline installed oneAPI.
+  > > # Skip this step for PIP-installed oneAPI since the environment has already been configured in LD_LIBRARY_PATH.
+  > > source /opt/intel/oneapi/setvars.sh
   > >
-  > ># Recommended Environment Variables for optimal performance
-  > >export USE_XETLA=OFF
-  > >export SYCL_PI_LEVEL_ZERO_USE_IMMEDIATE_COMMANDLISTS=1
-  > >export SYCL_CACHE_PERSISTENT=1
-  > >```
+  > > # Recommended Environment Variables for optimal performance
+  > > export USE_XETLA=OFF
+  > > export SYCL_PI_LEVEL_ZERO_USE_IMMEDIATE_COMMANDLISTS=1
+  > > export SYCL_CACHE_PERSISTENT=1
+  > > ```
 
->**NOTE** For the first time that each model runs on Intel iGPU/Intel Arc A300-Series or Pro A60, it may take several minutes to compile.
+> **NOTE** For the first time that each model runs on Intel iGPU/Intel Arc A300-Series or Pro A60, it may take several minutes to compile.
 
-----
+---
 ### Run the Example
+
 Then, run the example as following:
 
 ```
@@ -111,4 +112,4 @@ python text2sql.py -m <path_to_model> -d <device> -e <path_to_embedding_model> -
 
 > Please note that in this example we'll use [meta-llama/Meta-Llama-3-8B](https://huggingface.co/meta-llama/Meta-Llama-3-8B) model for demonstration, as well as [bge-large-en-v1.5](https://huggingface.co/BAAI/bge-large-en-v1.5) for our embedding model. It requires updating transformers and tokenizers packages. But you are also welcomed to use other models.
 
-> If you use other LLMs and encounter output issues, please try changing it. 
+> If you use other LLMs and encounter output issues, please try changing it.
