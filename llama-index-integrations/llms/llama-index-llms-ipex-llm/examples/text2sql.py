@@ -66,7 +66,6 @@ def main(args):
         device_map=device_map,
     )
 
-
     # default retrieval (return_raw=True)
     nl_sql_retriever = NLSQLRetriever(
         sql_database,
@@ -97,7 +96,7 @@ if __name__ == "__main__":
         type=str,
         default="cpu",
         choices=["cpu", "xpu"],
-        help="The device (Intel CPU or Intel GPU) the LLM model runs on"
+        help="The device (Intel CPU or Intel GPU) the LLM model runs on",
     )
     parser.add_argument(
         "-q",
